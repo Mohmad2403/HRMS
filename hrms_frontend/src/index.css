@@ -1,0 +1,295 @@
+:root {
+  --bg-main: #f4f6fb;
+  --bg-card: #ffffff;
+  --text-main: #212529;
+  --text-muted: #6c757d;
+  --border-color: #e9ecef;
+  --input-bg: #ffffff;
+}
+
+[data-theme="dark"] {
+  --bg-main: #0f1420;
+  --bg-card: #1b2436;
+  --text-main: #e9ecef;
+  --text-muted: #9aa5b1;
+  --border-color: #2a3447;
+  --input-bg: #121826;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Headings and generic text */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] div,
+[data-theme="dark"] td,
+[data-theme="dark"] th,
+[data-theme="dark"] label {
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .text-muted {
+  color: var(--text-muted) !important;
+}
+
+/* Cards */
+[data-theme="dark"] .card {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main);
+  border-color: var(--border-color) !important;
+}
+
+/* Header bar */
+[data-theme="dark"] header.border-bottom {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Tables */
+[data-theme="dark"] .table {
+  color: var(--text-main);
+  --bs-table-bg: var(--bg-card);
+  --bs-table-color: var(--text-main);
+  --bs-table-striped-bg: rgba(255, 255, 255, 0.03);
+  --bs-table-hover-bg: rgba(255, 255, 255, 0.05);
+  --bs-table-border-color: var(--border-color);
+}
+
+[data-theme="dark"] .table thead {
+  color: var(--text-muted);
+}
+
+/* Forms */
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select,
+[data-theme="dark"] textarea {
+  background-color: var(--input-bg);
+  color: var(--text-main);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+  background-color: var(--input-bg);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .form-control::placeholder {
+  color: var(--text-muted);
+}
+
+/* Borders everywhere */
+[data-theme="dark"] .border-bottom,
+[data-theme="dark"] .border-top,
+[data-theme="dark"] .border {
+  border-color: var(--border-color) !important;
+}
+
+/* Breadcrumb */
+[data-theme="dark"] .breadcrumb-muted {
+  color: var(--text-muted) !important;
+}
+
+/* Buttons that use light outline/colors */
+[data-theme="dark"] .btn-outline-secondary {
+  color: var(--text-main);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .btn-outline-secondary:hover {
+  background-color: var(--border-color);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .btn-light {
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border-color: var(--border-color);
+}
+
+/* Alerts keep readable text on dark */
+[data-theme="dark"] .alert {
+  color: #1a1a1a;
+}
+
+/* Sidebar already has its own dark navy — leave .sidebar untouched so it looks the same in both modes */
+
+/* Login page card should also respond */
+[data-theme="dark"] .login-form-side {
+  background-color: var(--bg-card);
+}
+
+
+
+:root {
+  --sidebar-bg: #0f1b3d;
+  --sidebar-active: #2563eb;
+  --sidebar-text: #a9b4d0;
+}
+
+body {
+  background-color: #f4f6fb;
+}
+
+.sidebar {
+  background-color: var(--sidebar-bg);
+  min-height: 100vh;
+}
+
+.sidebar .nav-link {
+  color: var(--sidebar-text);
+  font-size: 0.9rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 2px;
+}
+
+.sidebar .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}
+
+.sidebar .nav-link.active {
+  background-color: var(--sidebar-active);
+  color: #fff;
+}
+
+.avatar-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #2563eb;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.breadcrumb-muted {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.login-split {
+  min-height: 100vh;
+  display: flex;
+}
+
+.login-form-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: 2rem;
+}
+
+.login-form-wrap {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.login-art-side {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #f3f0ff 0%, #e9e4ff 100%);
+  overflow: hidden;
+}
+
+.login-art-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#c9bfff 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  opacity: 0.35;
+}
+
+.login-art-content {
+  position: relative;
+  text-align: center;
+  max-width: 340px;
+}
+
+@media (max-width: 900px) {
+  .login-art-side { display: none; }
+}
+
+
+  // this css for new evaluation
+.eval-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.eval-criterion {
+  padding: 1rem 0;
+  border-top: 1px solid #eef0f4;
+}
+
+.eval-criterion:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+
+// this css is for my performance 
+.eval-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.eval-criterion {
+  padding: 1rem 0;
+  border-top: 1px solid #eef0f4;
+}
+
+.eval-criterion:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+
+//this css for sidebar sublink
+.sidebar-sublink {
+  font-size: 0.82rem !important;
+  padding: 0.4rem 0.75rem !important;
+}

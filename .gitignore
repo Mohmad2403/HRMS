@@ -1,0 +1,43 @@
+# Python / Virtual Environment
+venv/
+.venv/
+env/
+hrms_backend/venv/
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment and sensitive data
+.env
+hrms_backend/.env
+hrms_frontend/.env
+*.env
+!*.env.example
+
+# Django
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+
+# Node / Frontend
+node_modules/
+hrms_frontend/node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
