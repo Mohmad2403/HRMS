@@ -96,7 +96,7 @@ if 'tidbcloud.com' in db_host or config('DB_SSL', default=False, cast=bool):
     if os.path.exists(ca_path):
         db_options['ssl'] = {'ca': ca_path}
     else:
-        db_options['ssl'] = True
+        db_options['ssl'] = {}
 
 DATABASE_URL = config('DATABASE_URL', default=None)
 if DATABASE_URL:
