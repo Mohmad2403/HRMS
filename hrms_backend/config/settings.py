@@ -88,6 +88,16 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
+db_options = {'charset': 'utf8mb4'}
+db_host = config('DB_HOST', default='127.0.0.1')
+if 'tidbcloud.com' in db_host or config('DB_SSL', default=False, cast=bool):
+    import os
+    ca_path = config('DB_CA_PATH', default='/etc/ssl/certs/ca-certificates.crt')
+    if os.path.exists(ca_path):
+        db_options['ssl'] = {'ca': ca_path}
+    else:
+        db_options['ssl'] = True
+
 DATABASE_URL = config('DATABASE_URL', default=None)
 if DATABASE_URL:
     DATABASES = {
@@ -104,9 +114,9 @@ else:
             'NAME': config('DB_NAME', default='hrms_database'),
             'USER': config('DB_USER', default='root'),
             'PASSWORD': config('DB_PASSWORD', default=''),
-            'HOST': config('DB_HOST', default='127.0.0.1'),
+            'HOST': db_host,
             'PORT': config('DB_PORT', default='3306'),
-            'OPTIONS': {'charset': 'utf8mb4'},
+            'OPTIONS': db_options,
         }
     }
 
