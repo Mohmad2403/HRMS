@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import api from '../../services/api'
 import { fmtHours, fmtTime, statusClass, statusLabel } from '../../utils/attendance'
 
-export default function CheckInCard() {
+export default function CheckInCard({ onUpdate }) {
   const [record, setRecord] = useState(null)
   const [loading, setLoading] = useState(true)
   const [busy, setBusy] = useState(false)
@@ -21,6 +21,7 @@ export default function CheckInCard() {
     try {
       const res = await api.post(`/attendance/${endpoint}/`)
       setRecord(res.data)
+      onUpdate?.()
     } catch (err) {
       setError(err.response?.data?.detail || 'Something went wrong.')
     } finally {

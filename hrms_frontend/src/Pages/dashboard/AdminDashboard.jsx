@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts'
 import api from '../../services/api'
+import { useAuth } from '../../context/AuthContext'
+import CheckInCard from '../attendance/CheckInCard'
 
 const COLORS = ['#2563eb', '#16a34a', '#f59e0b', '#dc2626', '#7c3aed', '#0891b2', '#db2777']
 
@@ -14,6 +16,7 @@ const QUICK_LINKS = [
 ]
 
 export default function AdminDashboard() {
+  const { user } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
   const basePath = location.pathname.split('/dashboard')[0]
@@ -40,7 +43,9 @@ export default function AdminDashboard() {
 
   return (
     <div>
-      <h4 className="mb-4">Admin Dashboard</h4>
+      <h4 className="mb-4">{user?.role === 'hr' ? 'HR Dashboard' : 'Admin Dashboard'}</h4>
+
+      {user?.role === 'hr' && <CheckInCard />}
 
       {/* Stat cards */}
       <div className="row g-3 mb-4">

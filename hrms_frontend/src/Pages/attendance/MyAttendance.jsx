@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import api from '../../services/api'
 import { fmtHours, fmtTime, statusClass, statusLabel } from '../../utils/attendance'
+import CheckInCard from './CheckInCard'
 
 export default function MyAttendance() {
   const [rows, setRows] = useState([])
@@ -8,11 +9,15 @@ export default function MyAttendance() {
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
+  const fetchRows = () => {
     setLoading(true)
     api.get('/attendance/my/', { params: { page } })
       .then((res) => { setRows(res.data.results); setCount(res.data.count) })
       .finally(() => setLoading(false))
+  }
+
+  useEffect(() => {
+    fetchRows()
   }, [page])
 
   const totalPages = Math.ceil(count / 10)
@@ -21,6 +26,8 @@ export default function MyAttendance() {
     <div>
       <h4 className="mb-0">My Attendance</h4>
       <div className="breadcrumb-muted mb-4">Dashboard / My Attendance</div>
+
+      <CheckInCard onUpdate={fetchRows} />
 
       <div className="card border-0 shadow-sm">
         <div className="table-responsive">
