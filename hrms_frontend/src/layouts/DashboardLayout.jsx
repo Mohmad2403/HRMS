@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { menuByRole } from '../utils/menuConfig'
@@ -39,9 +39,17 @@ function SidebarGroup({ group }) {
 export default function DashboardLayout() {
   const { user, logout } = useAuth()
   const { theme, toggleTheme } = useTheme()
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const location = useLocation()
+  const [sidebarOpen, setSidebarOpen] = useState(() => typeof window !== 'undefined' && window.innerWidth > 768)
   const links = menuByRole[user.role] || []
   const initials = (user.first_name || user.username).charAt(0).toUpperCase()
+
+  // Auto-close sidebar on mobile after clicking any link
+  useEffect(() => {
+    if (window.innerWidth <= 768) {
+      setSidebarOpen(false)
+    }
+  }, [location.pathname])
 
   return (
     <div className="d-flex" style={{ minHeight: '100vh' }}>
@@ -85,10 +93,18 @@ export default function DashboardLayout() {
         </nav>
       </aside>
 
+      {/* Mobile backdrop */}
+      {sidebarOpen && (
+        <div
+          className="sidebar-backdrop d-md-none"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
       {/* Main area */}
-      <div className="flex-grow-1 d-flex flex-column">
-        <header className="d-flex justify-content-between align-items-center border-bottom px-4 py-2" style={{ background: 'var(--bg-card)' }}>
-          <div className="d-flex align-items-center gap-3">
+      <div className="flex-grow-1 d-flex flex-column" style={{ minWidth: 0 }}>
+        <header className="d-flex justify-content-between align-items-center border-bottom px-3 px-md-4 py-2" style={{ background: 'var(--bg-card)' }}>
+          <div className="d-flex align-items-center gap-2 gap-md-3">
             <button
               type="button"
               className="sidebar-toggle-btn"
@@ -102,11 +118,11 @@ export default function DashboardLayout() {
                 <line x1="3" y1="18" x2="21" y2="18"></line>
               </svg>
             </button>
-            <span className="breadcrumb-muted text-uppercase">{user.role} panel</span>
+            <span className="breadcrumb-muted text-uppercase small">{user.role} panel</span>
           </div>
-          <div className="d-flex align-items-center gap-3">
+          <div className="d-flex align-items-center gap-2 gap-sm-3">
             <div className="avatar-circle">{initials}</div>
-            <div>
+            <div className="d-none d-sm-block">
               <div className="fw-semibold" style={{ fontSize: '0.9rem' }}>
                 {user.first_name || user.username}
               </div>

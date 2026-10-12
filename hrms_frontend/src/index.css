@@ -178,6 +178,35 @@ body {
   background: rgba(120, 130, 150, 0.12);
 }
 
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1050;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+    transform: translateX(0);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .sidebar.collapsed {
+    transform: translateX(-100%) !important;
+    width: 240px !important;
+    opacity: 1 !important;
+    pointer-events: none;
+  }
+
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(2px);
+    z-index: 1040;
+    cursor: pointer;
+  }
+}
+
 .sidebar .nav-link {
   color: var(--sidebar-text);
   font-size: 0.9rem;
