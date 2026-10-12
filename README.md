@@ -8,9 +8,18 @@ Built as a solo project to practice production-style full-stack architecture: JW
 
 ## Live Demo
 
-- **Frontend:** _add your deployed URL here_
-- **Backend API:** _add your deployed URL here_
-- **Demo logins:** _add a few safe demo credentials here if you want reviewers to try it_
+- **Frontend App:** [https://hrms-theta-dun.vercel.app](https://hrms-theta-dun.vercel.app)
+- **Backend API:** [https://hrms-0l8s.onrender.com](https://hrms-0l8s.onrender.com)
+- **Django Admin:** [https://hrms-0l8s.onrender.com/admin/](https://hrms-0l8s.onrender.com/admin/)
+
+### Demo Logins (For Reviewers)
+
+| Role | Username | Password | Access / Scope |
+|---|---|---|---|
+| **Admin** | `admin` | `Admin@1234` | Full company control, all modules, analytics & settings |
+| **HR** | `priya_hr` | `Priya@HR2026` | Employee CRUD, company payroll, all leaves & attendance |
+| **Manager** | `rahul_mgr` | `Rahul@Mgr2026` | Team performance reviews, attendance & leave approvals |
+| **Employee** | `aman_dev` | `Aman@Dev2026` | Self check-in/out, apply leave, my salary, performance |
 
 ---
 
