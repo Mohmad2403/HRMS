@@ -17,10 +17,15 @@ class LogoutView(APIView):
 
     def post(self, request):
         try:
-            token = RefreshToken(request.data['refresh'])
-            token.blacklist()
+            refresh_token = request.data.get('refresh')
+            if refresh_token:
+                token = RefreshToken(refresh_token)
+                try:
+                    token.blacklist()
+                except Exception:
+                    pass
         except Exception:
-            return Response({'detail': 'Invalid token.'}, status=status.HTTP_400_BAD_REQUEST)
+            pass
         return Response({'detail': 'Logged out.'}, status=status.HTTP_200_OK)
 
 
